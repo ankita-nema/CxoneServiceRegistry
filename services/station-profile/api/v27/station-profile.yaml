@@ -1,0 +1,121 @@
+openapi: 3.0.1
+info:
+  description: Admin commandsdfg
+  version: 'v27'
+  title: AdminAPI
+tags:
+- name: StationProfiles
+  description: " : New in v27.0 Station Profile Managementxv"
+schemes:
+- https
+servers:
+- url: https://api-do32.dev.nice-incontact.com/incontactapi/services/v27.0
+paths:
+  "/station-profiles":
+    options:
+      tags:
+      - StationProfiles
+      summary: New in v27.0 Returns a list of paginated Station Profiles
+      operationId: get-station-profiles
+      description: This API Returns a list of paginated Station Profiles
+      produces:
+      - application/json
+      parameters:
+      - name: searchString
+        description: Search criteria
+        type: string
+        in: query
+      - name: fields
+        description: Fields to be obtained in the response
+        type: string
+        in: query
+      - name: skip
+        description: The starting row of list to obtain
+        type: integer
+        in: query
+      - name: top
+        description: The number of rows to obtain
+        type: integer
+        in: query
+      - name: orderBy
+        description: Field to order the list
+        type: string
+        in: query
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              businessUnitId:
+                type: integer
+                description: Id of business unit
+              totalRecords:
+                type: integer
+                description: total records obtained
+              stationProfiles:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    stationProfileId:
+                      type: integer
+                      description: id of Station Profile
+                    stationProfileName:
+                      type: string
+                      description: name of Station Profile
+                    stationTimeout:
+                      type: integer
+                      description: timeout of Station Profile in seconds
+        '400':
+          description: InvalidParameters
+        '401':
+          description: Unauthorized
+        '403':
+          description: InvalidPermissions
+        '500':
+          description: ServiceException
+    post:
+      tags:
+      - StationProfiles
+      summary: New in v27.0 Creates a Station Profile
+      operationId: post-station-profiles
+      description: This API allows to create a new Station Profile
+      produces:
+      - application/json
+      parameters:
+      - name: stationProfile
+        description: Station Profile to be created
+        in: body
+        required: true
+        schema:
+          type: object
+          additionalProperties: false
+          properties:
+            stationProfileName:
+              type: string
+              description: Name of Station Profile
+            stationTimeout:
+              type: integer
+              description: Timeout of Station Profile in seconds
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: object
+            additionalProperties: false
+            properties:
+              stationProfileId:
+                type: integer
+                description: ID of the new Station Profile
+        '400':
+          description: 'InvalidStationProfileName  <br/> InvalidStationTimeout '
+        '401':
+          description: Unauthorized
+        '403':
+          description: Invalid Permissions
+        '409':
+          description: 'DuplicateStationProfileName  <br/> StationTimeoutTooLong '
+        '500':
+          description: Something unexpected happened
