@@ -5,7 +5,7 @@ info:
   title: AdminAPI
 tags:
 - name: StationProfiles
- 
+  
 schemes:
 - https
 servers:
