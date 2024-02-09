@@ -1,0 +1,122 @@
+extends: [["spectral:oas", "all"]]
+
+functionsDir: "../../../functions"
+functions: 
+  - uri-format-validation
+  - uri-case-validation
+
+parserOptions:
+  duplicateKeys: warn # error is the default value
+  incompatibleValues: off # error is the default value
+
+rules:
+  operation-operationId: false
+  operation-tags: false
+  contact-properties: false
+  tag-description: false
+  oas3-valid-media-example: warn
+  oas3-valid-schema-example: warn
+  oas3-schema: warn
+
+  openapi-field-required:
+    description: openapi field is required.
+    severity: error
+    given: $
+    then:
+      field: openapi
+      function: truthy
+      
+  #Rule to validate Info object required in api document
+  info-object-required:
+    description: Info object field is required.
+    severity: warn
+    given: $
+    then:
+      field: info
+      function: truthy
+
+  info-contact-required:
+    description: contact field is required in info object.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  info-version-required:
+    description: version field is required in info object.
+    severity: warn
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  #Rule to allow only get, post, put, delete, patch types of method
+  http-allowed-method-types:
+     description: Only [GET,POST,PUT,DELETE,PATCH] method types allowed.
+     given: $.paths[*]
+     severity: error
+     then:
+       field: "@key"
+       function: enumeration
+       functionOptions:
+          values:
+            - get
+            - post
+            - put
+            - delete
+            - patch
+
+  options-method-not-allowed:
+     description: OPTIONS method type not allowed.
+     severity: error
+     given: $.paths[*][options]
+     then:
+        function: length
+        functionOptions:
+          max: 0
+
+  tags-object-required:
+    description: tags object is required.
+    severity: error
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  uri-format-validation:
+    description: Complete URI for all API calls must follow the format https://<host name>/<service name>/<service version>/<resource name>
+    message: "{{error}}"
+    given: $
+    severity: warn
+    then:
+      function: uri-format-validation
+
+  uri-case-validation:
+    description: Complete URI for all API calls must follow the format https://<host name>/<service name>/<service version>/<resource name>
+    message: "{{error}}"
+    given: $
+    severity: warn
+    then:
+      function: uri-case-validation
+
+  # tags-name-required:
+  #   description: name field is required in tags object.
+  #   severity: error
+  #   given: $.tags
+  #   then:
+  #     field: name
+  #     function: truthy
+
+  # tags-description-required:
+  #   description: description field is required in tags object.
+  #   severity: error
+  #   given: $.tags
+  #   then:
+  #     field: description
+  #     function: truthy
+  
+    
+   
+
+  
