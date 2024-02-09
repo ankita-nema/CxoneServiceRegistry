@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  description: Admin commandsdfg
+  description: Admin commandsdfgcsdv
   version: 'v27'
   title: AdminAPI
 tags:
