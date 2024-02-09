@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   description: You can use this API to accesst CXone Recordixng media and metadata. 
-  version: "1"
+  version: "v1"
   title: Media Playback API
   contact:
     email: 'R&DApiTeam@niceincontact.com' 
@@ -105,7 +105,7 @@ paths:
               example:
                 $ref: '#/components/examples/Error500Example'
   /media-playback/v1/acd-contacts/{acdContactId}/statements/{statementId}:
-    get:
+    options:
       tags:
         - Accessing the Recording Media
       summary: Access a recording statement based on ACD Contact ID and Statement ID. 
