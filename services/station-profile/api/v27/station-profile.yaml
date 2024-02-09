@@ -5,8 +5,8 @@ info:
   title: AdminAPI
 tags:
 - name: StationProfiles 
-description: " : New in v27.0 Station Profile Managementxv"
- 
+  description: " : New in v27.0 Station Profile Managementxv"
+
 schemes:
 - https
 servers:
