@@ -4,7 +4,8 @@ info:
   version: 'v27'
   title: AdminAPI
 tags:
-- name: StationProfiles
+- name: StationProfiles 
+description: " : New in v27.0 Station Profile Managementxv"
  
 schemes:
 - https
