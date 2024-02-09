@@ -1,6 +1,6 @@
 # MegaLinter GitHub Action configuration file
 # More info at https://oxsecurity.github.io/megalinter
-name: API Doc validation and integration with Devone
+name: API Doc validation and integration with Devone Middleware
 
 on:
   # Trigger mega-linter at every push. Action will also be visible from Pull Requests to main
