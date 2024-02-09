@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  description: You can use this API to accesst CXone Recordixng media and metadsdaatas. 
+  description: You can use this APIcz to accesst CXone Recordixng media and metadsdaatas. 
   version: "v1"
   title: Media Playback API
   contact:
