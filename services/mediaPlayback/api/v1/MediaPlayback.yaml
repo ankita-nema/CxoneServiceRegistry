@@ -13,7 +13,7 @@ tags:
     description: When playings back an interaction, the API tracvbcvnsfers the interaction metadata and a link to the media file (voice-only and voice-and-screen media types) or the interaction metadata and the transcript (chat and email media types). When downloading, the API transfers a link to the media file.
 paths:
   /media-playback/v1/contacts:
-    options:
+    get:
       tags:
         - Accessing the Recording Media
       summary: Access the full contact  based on ACD Contaccbvt ID. The ACD Contact ID depends on the ACD solution.
