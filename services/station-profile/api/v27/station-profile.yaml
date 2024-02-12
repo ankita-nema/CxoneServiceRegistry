@@ -16,7 +16,7 @@ paths:
     options:
       tags:
       - StationProfiles
-      summary: New in v27.0 Returns a list of paginated Station Profiles
+      summary: Demo New in v27.0 Returns a list of paginated Station Profiles
       operationId: get-station-profiles
       description: This API Returns a list of paginated Station Profiles
       produces:
